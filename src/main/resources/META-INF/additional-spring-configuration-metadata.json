@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "rds.iamAuth.enabled",
+      "type": "java.lang.String",
+      "description": "Toggle to enable/disable IAM Authentication of RDS DB cluster"
+    },
+    {
+      "name": "rds.iamAuth.user",
+      "type": "java.lang.String",
+      "description": "User that has been created in the database that this application will use."
+    },
+    {
+      "name": "rds.iamAuth.region",
+      "type": "java.lang.String",
+      "description": "The region in which the database is running."
+    }
+  ]
+}
