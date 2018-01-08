@@ -1,6 +1,6 @@
 # lib-platform-shared-iamDbAuth
 
-lib-platform-shared-iamDbAuth library is added as a dependancy to any Spring Boot application runs on AWS EC2/ECS which enables it to connect to AWS RDS database without a static database password.
+lib-platform-shared-iamDbAuth library is added as a dependency to any Spring Boot application runs on AWS EC2/ECS which enables it to connect to AWS RDS database without a static database password.
 You can able to toggle on/off to use IAM Auth DB authentication
 
 
