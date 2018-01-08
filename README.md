@@ -65,4 +65,4 @@ GRANT ALL PRIVILEGES ON <DB_NAME>.* TO 'refurlapp'@'%';
 FLUSH PRIVILEGES;
 ```
 
-The password will be refreshed every 14 minutes.
+As these passwords expire every 15 minutes, the password will be refreshed every 14 minutes.
