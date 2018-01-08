@@ -5,13 +5,20 @@ You can able to toggle on/off to use IAM Auth DB authentication
 
 Please read this [AWS document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html#UsingWithRDS.IAMDBAuth.ConnectionsPerSecond) before implementing this library.
 
+Before we start, let’s talk about the restrictions when using IAM database authentication:
+
+* Using the MySQL or Aurora RDS engine is required (MySQL >=5.6.34, MySQL >=5.7.16, Aurora >1.10).
+* A Secure Sockets Layer (SSL) database connection is needed.
+* Smallest database instance types do not support IAM database authentication. db.t1.micro and db.m1.small instance types are excluded for MySQL. * The db.t2.small instance type is excluded for Aurora.
+* AWS recommends creating no more than 20 database connections per second when using IAM database authentication.
+
+
 ## How to build
 ### Standard gradle build
 ```
 gradle clean build
 ```
 ## Steps to utilize the library
-### Prerequisites
 #### Spring Application
 1. Add this dependency in the build.gradle or maven
 ```
@@ -43,3 +50,12 @@ dependency "com.ebsco.platform.shared:lib-platform-shared-iamDbAuth-core:0.0.1.S
 #### RDS Database cluster
 1. Enable the IAM Auth DB for the RDS database cluster/instance. Please follow this [document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Enabling.html)
 2. Allow the application role to connect to the RDS cluster by creating and attaching an IAM policy to the role. Please follow the [document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.IAMPolicy.html)
+
+#### Mysql Database
+1. Create a user with the username you want to access the database with.
+
+```
+CREATE USER 'refurlapp' IDENTIFIED WITH AWSAuthenticationPlugin as 'RDS';
+GRANT ALL PRIVILEGES ON <DB_NAME>.* TO 'refurlapp'@'%';
+FLUSH PRIVILEGES;
+```
