@@ -3,7 +3,10 @@
 lib-platform-shared-iamDbAuth library is added as a dependancy to any Spring Boot application runs on AWS EC2/ECS which enables it to connect to AWS RDS database without a static database password.
 You can able to toggle on/off to use IAM Auth DB authentication
 
-Please read this [AWS document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html#UsingWithRDS.IAMDBAuth.ConnectionsPerSecond) before implementing this library.
+
+Architecture 
+![alt text](https://github.com/jshanm/lib-platform-shared-iamDbAuth/blob/master/src/main/resources/META-INF/Architecture.png "Architecture")
+
 
 Before we start, let’s talk about the restrictions when using IAM database authentication:
 
@@ -11,6 +14,8 @@ Before we start, let’s talk about the restrictions when using IAM database aut
 * A Secure Sockets Layer (SSL) database connection is needed.
 * Smallest database instance types do not support IAM database authentication. db.t1.micro and db.m1.small instance types are excluded for MySQL. * The db.t2.small instance type is excluded for Aurora.
 * AWS recommends creating no more than 20 database connections per second when using IAM database authentication.
+
+Please read this [AWS document](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html#UsingWithRDS.IAMDBAuth.ConnectionsPerSecond) before implementing this library.
 
 
 ## How to build
