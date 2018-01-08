@@ -64,3 +64,5 @@ CREATE USER 'refurlapp' IDENTIFIED WITH AWSAuthenticationPlugin as 'RDS';
 GRANT ALL PRIVILEGES ON <DB_NAME>.* TO 'refurlapp'@'%';
 FLUSH PRIVILEGES;
 ```
+
+The password will be refreshed every 14 minutes.
